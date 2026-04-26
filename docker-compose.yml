@@ -1,0 +1,43 @@
+version: "3.8"
+
+services:
+  # ─── MongoDB ─────────────────────────────────────────
+  mongodb:
+    image: mongo:7
+    container_name: orbionx-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - orbionx-net
+    restart: unless-stopped
+
+  # ─── Backend API ─────────────────────────────────────
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: orbionx-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017
+      - DATABASE_NAME=orbionx
+      - CELESTRAK_URL=https://celestrak.org/NORAD/elements/gp.php?GROUP=active&FORMAT=tle
+      - TLE_FETCH_INTERVAL=60
+      - POSITION_UPDATE_INTERVAL=60
+      - COLLISION_CHECK_INTERVAL=120
+    depends_on:
+      - mongodb
+    networks:
+      - orbionx-net
+    restart: unless-stopped
+
+volumes:
+  mongo_data:
+    driver: local
+
+networks:
+  orbionx-net:
+    driver: bridge

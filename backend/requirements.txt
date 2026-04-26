@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+motor
+pymongo
+skyfield
+sgp4
+numpy
+pandas
+scikit-learn
+pydantic
+httpx
+joblib
+python-dotenv
+scipy
