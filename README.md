@@ -267,8 +267,9 @@ If OrbionX helps you or your team, please consider giving this repository a star
 
 ## Team
 - **Aman Verma** - **ML Developer and Team Lead**
-- **Somu and Adeed** - **Handles Frontend and UI/UX**
-- **Shubham Pandey** - **Handles Backend and Reasearch Part**
+- **Somu Sharma** - **Handles Frontend and UI/UX**
+- **Adeed Khan** - **Full Stack Developer**
+
 
 ## License
 No license file is currently defined in this repository. Add a `LICENSE` file before public distribution.
